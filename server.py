@@ -1,17 +1,15 @@
+# -*- coding: utf-8 -*-
 import socket
 from _thread import *
 import pickle
 from game import Game
 
-server = "192.168.16.102"
+server = "IP ADDRESS"
 port = 8888
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-try:
-    s.bind((server, port))
-except socket.error as e:
-    str(e)
+s.bind((server, port))
 
 s.listen(2)
 print("Rodando na porta: ", port)
