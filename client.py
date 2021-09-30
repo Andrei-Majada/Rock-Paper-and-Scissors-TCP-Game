@@ -1,6 +1,5 @@
 import pygame
 from network import Network
-import pickle
 pygame.font.init()
 
 width = 500
@@ -31,20 +30,27 @@ class Input:
         else:
             return False
 
+btns = [Input("Pedra", 50, 200, (50,50,50)), Input("Papel", 200, 200, (50,50,50)), Input("Tesoura", 350, 200, (50,50,50))]
 
 def Screen(window, game, player):
     window.fill((20,20,20))
 
     if not(game.connected()):
         font = pygame.font.SysFont("arial", 40)
-        text = font.render("Buscando adversário...", 1, (5,57,253), True)
+        text = font.render("Você é o Player 1", 1, (5,57,253), True)
         window.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
     else:
         font = pygame.font.SysFont("arial", 20)
         text = font.render("PEDRA, PAPEL E TESOURA", 1, (255,198,23))
         window.blit(text, (width/2 - text.get_width()/2, 50 - text.get_height()/2))
+
+        if player == 1:
+            move = game.get_player_move(1)
+        else:
+            move = game.get_player_move(0)
+
         font = pygame.font.SysFont("arial", 20)
-        text = font.render("Selecione o seu:", 1, (64,31,255))
+        text = font.render(move, 1, (64,31,255))
         window.blit(text, (width/2 - text.get_width()/2, 100 - text.get_height()))
 
         for btn in btns:
@@ -52,8 +58,6 @@ def Screen(window, game, player):
 
     pygame.display.update()
 
-
-btns = [Input("Pedra", 50, 200, (50,50,50)), Input("Papel", 200, 200, (50,50,50)), Input("Tesoura", 350, 200, (50,50,50))]
 def main():
     keep = True
     clock = pygame.time.Clock()
@@ -68,7 +72,7 @@ def main():
             keep = False
             print("Nao foi possivel iniciar o jogo!")
             break
-
+        
         if game.bothWent():
             Screen(win, game, player)
             pygame.time.delay(300)
@@ -102,12 +106,14 @@ def main():
                     if btn.clickPosition(pos) and game.connected():
                         if player == 0:
                             if not game.p1Went:
+                                print("btn.text", btn.text)
                                 n.send(btn.text)
                         else:
                             if not game.p2Went:
+                                print("btn.text", btn.text)
                                 n.send(btn.text)
 
-        Screen(win, game, player)
+        Screen(win, game, player)   
 
 def menuGame():
     play = True
@@ -120,7 +126,7 @@ def menuGame():
         text = font.render("PEDRA, PAPEL E TESOURA", 1, (77,192,69))
         win.blit(text, (width/2 - text.get_width()/2, 50 - text.get_height()/4))
         font = pygame.font.SysFont("arial", 40)
-        text = font.render("Clique na tela para jogar!", 1, (77,192,69))
+        text = font.render("PLAY", 1, (77,192,69))
         win.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
         pygame.display.update()
 
