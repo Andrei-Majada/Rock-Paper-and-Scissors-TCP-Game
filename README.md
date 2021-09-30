@@ -11,7 +11,7 @@ Basic game of rock, paper and scissors between two players, it consists of a pla
 
 ## Installation
 
-Clone this repo and start the server. You must have python3 installed. 
+Clone this repo and start the server. You must have python3 installed. Replace with your ip address in server.py and network.py files.
 
 ```sh
 cd repo-name
