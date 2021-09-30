@@ -63,7 +63,7 @@ def main():
     clock = pygame.time.Clock()
     n = Network()
     player = int(n.getP())
-    print("You are player", player)
+    print("Jogador ", player)
 
     while keep:
         try:
@@ -106,11 +106,11 @@ def main():
                     if btn.clickPosition(pos) and game.connected():
                         if player == 0:
                             if not game.p1Went:
-                                print("btn.text", btn.text)
+                                print("escolha", btn.text)
                                 n.send(btn.text)
                         else:
                             if not game.p2Went:
-                                print("btn.text", btn.text)
+                                print("escolha ", btn.text)
                                 n.send(btn.text)
 
         Screen(win, game, player)   
