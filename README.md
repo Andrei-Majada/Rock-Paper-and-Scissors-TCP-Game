@@ -15,12 +15,20 @@ Clone this repo and start the server. You must have python3 installed.
 
 ```sh
 cd repo-name
-python3 -m pip install -U pygame --user
-python3 server.py
-python3 client.py
-python3 client.py
-
 ```
+```sh
+python3 -m pip install -U pygame --user
+```
+```sh
+python3 server.py
+```
+```sh
+python3 client.py
+```
+```sh
+python3 client.py
+```
+
 
    [Python]: <https://www.python.org/downloads/>
    [Pygame]: <https://www.pygame.org/wiki/GettingStarted>
