@@ -4,25 +4,26 @@ Basic game of rock, paper and scissors between two players, it consists of a pla
 
 ## Tech
 
-- [Python] - 
-- [Pygame] - 
+- [Python] 
+- [Pygame] 
 
 
 
 ## Installation
 
-Clone this repo and start the server.
+Clone this repo and start the server. You must have python3 installed. 
 
 ```sh
 cd repo-name
-npm install
-npm start
+python3 -m pip install -U pygame --user
+python3 server.py
+python3 client.py
+python3 client.py
+
 ```
-You need to create an .env file and fill in the values of the environment variables.
 
-
-   [nestjs]: <https://nestjs.com/>
-   [nestjs-i18n]: <https://www.npmjs.com/package/nestjs-i18n>
+   [Python]: <https://www.python.org/downloads/>
+   [Pygame]: <https://www.pygame.org/wiki/GettingStarted>
 
 
 
